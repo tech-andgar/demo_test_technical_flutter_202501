@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/widgets/widgets.dart';
-import '../view_model/form_view_model.dart';
+import '../view_model/anamnesis_steps_view_model.dart';
 
 class AnamnesisStepScreen extends ConsumerWidget {
   const AnamnesisStepScreen({super.key});
