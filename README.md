@@ -88,7 +88,7 @@ lib/
 │   ├── theme/
 │   └── widgets/  /// Reusable UI components divided into atoms and molecules
 ├── modules/      /// Feature-based modules containing screens and view models
-│   └── forms/
+│   └── anamnesis/
 │       ├── presentation/
 │       └── view_model/
 └── main.dart
