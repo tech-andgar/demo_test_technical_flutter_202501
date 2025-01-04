@@ -73,9 +73,11 @@ class AnamnesisStep2Screen extends ConsumerWidget {
   }
 
   Future<void> openDialog(BuildContext context) async {
+    final router = GoRouter.of(context);
+
     await showDialog<void>(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return AlertDialog(
           backgroundColor: Colors.black87,
           title: const CustomText('Cuestionario finalizado', fontSize: 20),
@@ -91,7 +93,8 @@ class AnamnesisStep2Screen extends ConsumerWidget {
             CustomButton(
               label: 'Ir a la pantalla de inicio',
               onTap: () {
-                context.pushReplacement(RoutesName.anamnesisStep1);
+                Navigator.of(dialogContext).pop();
+                router.pushReplacement(RoutesName.anamnesisStep1);
               },
             ),
           ],

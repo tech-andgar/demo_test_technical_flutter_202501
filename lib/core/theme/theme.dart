@@ -8,6 +8,7 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData.dark(
     useMaterial3: true,
   ).copyWith(
+    brightness: Brightness.dark,
     colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
     appBarTheme: AppBarTheme(
       color: Colors.black,
@@ -122,37 +123,6 @@ class AppTheme {
       selectedColor: Colors.white,
       fillColor: Colors.blue.withAlpha(30),
       color: Colors.white,
-    ),
-    segmentedButtonTheme: SegmentedButtonThemeData(
-      style: ButtonStyle(
-        backgroundColor:
-            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
-          if (states.contains(WidgetState.selected)) {
-            return Colors.blue.withAlpha(30);
-          } else if (states.contains(WidgetState.hovered)) {
-            return Colors.grey.withAlpha(40);
-          }
-
-          return Colors.transparent;
-        }),
-        foregroundColor: WidgetStateProperty.all<Color?>(Colors.white),
-        shape: WidgetStateProperty.all(
-          const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        ),
-        side: WidgetStateProperty.resolveWith((state) {
-          if (state.contains(WidgetState.selected)) {
-            return const BorderSide(
-              color: Colors.blue,
-              width: 2.0,
-            );
-          }
-
-          return const BorderSide(
-            color: Colors.blue,
-            width: 0.0,
-          );
-        }),
-      ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyle(
