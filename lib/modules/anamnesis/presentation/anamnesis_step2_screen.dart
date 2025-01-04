@@ -8,16 +8,16 @@ import 'package:go_router/go_router.dart';
 import '../../../core/core.dart';
 import '../view_model/anamnesis_steps_view_model.dart';
 
-class AnamnesisStepScreen extends ConsumerWidget {
-  const AnamnesisStepScreen({super.key});
+class AnamnesisStep2Screen extends ConsumerWidget {
+  const AnamnesisStep2Screen({super.key});
 
   /// Route name: `/anamnesis_step2`.
   static const String routeName = '/anamnesis_step2';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.watch(form2ViewModel.notifier);
-    final state = ref.watch(form2ViewModel);
+    final viewModel = ref.watch(anamnesisForm2ViewModel.notifier);
+    final state = ref.watch(anamnesisForm2ViewModel);
 
     final sizedBox16 = SizedBox(height: 16.sp);
     final sizedBox12 = SizedBox(height: 12.sp);

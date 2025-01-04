@@ -4,5 +4,5 @@ import '../../modules/modules.dart';
 
 class RoutesName {
   static const anamnesisStep1 = AnamnesisStep1Screen.routeName;
-  static const anamnesisStep2 = AnamnesisStepScreen.routeName;
+  static const anamnesisStep2 = AnamnesisStep2Screen.routeName;
 }

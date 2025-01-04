@@ -7,13 +7,13 @@ import '../../modules/modules.dart';
 import 'routes.dart';
 
 // Global key for navigation and state tracking
-final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppRoutes {
   static const initial = RoutesName.anamnesisStep1;
 
   static final GoRouter router = GoRouter(
-    navigatorKey: _rootNavigatorKey,
+    navigatorKey: rootNavigatorKey,
     initialLocation: initial,
     routes: <RouteBase>[
       GoRoute(
@@ -24,7 +24,7 @@ class AppRoutes {
       GoRoute(
         path: RoutesName.anamnesisStep2,
         pageBuilder: (_, GoRouterState state) =>
-            buildCustomPage(state, const AnamnesisStepScreen()),
+            buildCustomPage(state, const AnamnesisStep2Screen()),
       ),
     ],
   );
