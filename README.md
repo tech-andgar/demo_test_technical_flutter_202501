@@ -1,4 +1,8 @@
-# Demo Test Technical Flutter 202501
+# Demo AFGR - Test Technical Flutter 202501
+
+![coverage][coverage_badge]
+
+---
 
 A Flutter application implementing a multi-step form with animations and state management.
 
@@ -170,3 +174,5 @@ The project enforces high code quality standards through:
    - `CustomButton`: Reusable button component
    - `CustomToggleButton`: Two-state toggle component
    - `CustomTextRequired`: Text with required field indicator
+
+[coverage_badge]: coverage_badge.svg
