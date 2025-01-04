@@ -128,12 +128,73 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Jost
+    - family: 'Futura Book Italic'
       fonts:
-        - asset: fonts/Jost-VariableFont_wght.ttf
-    - family: Jost-Italic
+        - asset: 'fonts/Futura Book Italic font.ttf'
+          weight: 400
+          style: 'italic'
+    - family: 'futur'
       fonts:
-        - asset: fonts/Jost-Italic-VariableFont_wght.ttf
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+        - asset: 'fonts/futur.ttf'
+    - family: 'futura light bt'
+      fonts:
+        - asset: 'fonts/futura light bt.ttf'
+          weight: 300
+    - family: 'Futura Extra Black'
+      fonts:
+        - asset: 'fonts/Futura Extra Black font.ttf'
+          weight: 900
+    - family: 'futura medium condensed bt'
+      fonts:
+        - asset: 'fonts/futura medium condensed bt.ttf'
+          weight: 400
+    - family: 'Futura Medium Italic'
+      fonts:
+        - asset: 'fonts/Futura Medium Italic font.ttf'
+          weight: 400
+          style: 'italic'
+    - family: 'Futura Heavy Italic'
+      fonts:
+        - asset: 'fonts/Futura Heavy Italic font.ttf'
+          weight: 400
+          style: 'italic'
+    - family: 'Futura Light Italic'
+      fonts:
+        - asset: 'fonts/Futura Light Italic font.ttf'
+          weight: 400
+          style: 'italic'
+    - family: 'tt0205m '
+      fonts:
+        - asset: 'fonts/tt0205m_.ttf'
+    - family: 'Futura Bold'
+      fonts:
+        - asset: 'fonts/Futura Bold font.ttf'
+          weight: 700
+    - family: 'Futura Heavy'
+      fonts:
+        - asset: 'fonts/Futura Heavy font.ttf'
+    - family: 'Futura Book'
+      fonts:
+        - asset: 'fonts/Futura Book font.ttf'
+    - family: 'unicode.futurab'
+      fonts:
+        - asset: 'fonts/unicode.futurab.ttf'
+    - family: 'futura medium bt'
+      fonts:
+        - asset: 'fonts/futura medium bt.ttf'
+          weight: 500
+    - family: 'Futura Light'
+      fonts:
+        - asset: 'fonts/Futura Light font.ttf'
+          weight: 300
+    - family: 'Futura XBlk BT'
+      fonts:
+        - asset: 'fonts/Futura XBlk BT.ttf'
+    - family: 'Futura Bold Italic'
+      fonts:
+        - asset: 'fonts/Futura Bold Italic font.ttf'
+          weight: 400
+          style: 'italic'
+    - family: 'unicode.futurabb'
+      fonts:
+        - asset: 'fonts/unicode.futurabb.ttf'
