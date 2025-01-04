@@ -1,11 +1,11 @@
-# Demo AFGR - Test Technical Flutter 202501
+# Demo AFGR - Test Technical Flutter 2025-01
 
 <p align="center">
 
 [![build](https://github.com/tech-andgar/demo_test_technical_flutter_202501/actions/workflows/build.yml/badge.svg)](https://github.com/tech-andgar/demo_test_technical_flutter_202501/actions/workflows/build.yml)
 ![coverage][coverage_badge]
 [![Coverage Status](https://coveralls.io/repos/github/DartForge/http_status/badge.svg?branch=main)](https://coveralls.io/github/tech-andgar/demo_test_technical_flutter_202501?branch=main)
-[![Star this Repo](https://img.shields.io/github/stars/DartForge/http_status.svg?style=flat)](https://github.com/tech-andgar/demo_test_technical_flutter_202501)
+[![Star this Repo](https://img.shields.io/github/stars/tech-andgar/demo_test_technical_flutter_202501.svg?style=flat)](https://github.com/tech-andgar/demo_test_technical_flutter_202501)
 
 </p>
 
