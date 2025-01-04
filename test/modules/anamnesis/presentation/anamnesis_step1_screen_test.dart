@@ -10,22 +10,42 @@ import 'package:mocktail/mocktail.dart';
 class MockGoRouter extends Mock implements GoRouter {}
 
 void main() {
-  testWidgets('AnamnesisStep1Screen renders correctly', (tester) async {
-    // Arrange
-    await tester.pumpWidget(
-      ProviderScope(
-        child: ScreenUtilInit(
-          designSize: const Size(800, 1200),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return const MaterialApp(
-              home: AnamnesisStep1Screen(),
-            );
-          },
-        ),
+  late ProviderContainer container;
+  late MockGoRouter mockGoRouter;
+
+  setUp(() {
+    container = ProviderContainer();
+    mockGoRouter = MockGoRouter();
+    when(() => mockGoRouter.pushReplacement(any()))
+        .thenAnswer((_) async => null);
+  });
+
+  tearDown(() {
+    container.dispose();
+  });
+
+  Widget createWidgetUnderTest({Widget? child}) {
+    return UncontrolledProviderScope(
+      container: container,
+      child: ScreenUtilInit(
+        designSize: const Size(800, 1200),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, _) {
+          return MaterialApp(
+            home: InheritedGoRouter(
+              goRouter: mockGoRouter,
+              child: child ?? const AnamnesisStep1Screen(),
+            ),
+          );
+        },
       ),
     );
+  }
+
+  testWidgets('AnamnesisStep1Screen renders correctly', (tester) async {
+    // Arrange
+    await tester.pumpWidget(createWidgetUnderTest());
 
     await tester.pumpAndSettle();
 

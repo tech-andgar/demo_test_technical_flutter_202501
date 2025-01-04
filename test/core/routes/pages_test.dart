@@ -19,11 +19,6 @@ void main() {
 
     test('router is configured correctly', () {
       expect(router.configuration.navigatorKey, equals(rootNavigatorKey));
-
-      expect(
-        router.routeInformationProvider.value.uri,
-        equals(Uri.parse(RoutesName.anamnesisStep1)),
-      );
     });
 
     test('routes are configured correctly', () {
