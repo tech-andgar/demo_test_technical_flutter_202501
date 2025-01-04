@@ -1,0 +1,18 @@
+{
+  "cSpell.words": [
+    "extralight",
+    "futur",
+    "futurab",
+    "futurabb",
+    "jost",
+    "Jost",
+    "operacion",
+    "subosito",
+    "unicode"
+  ],
+  "search.useGlobalIgnoreFiles": false,
+  "search.useIgnoreFiles": true,
+  "[dart]": {
+    "editor.inlayHints.enabled": "on"
+  }
+}
