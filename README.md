@@ -1,14 +1,19 @@
 # Demo AFGR - Test Technical Flutter 202501
 
+<p align="center">
+
+[![build](https://github.com/tech-andgar/demo_test_technical_flutter_202501/actions/workflows/build.yml/badge.svg)](https://github.com/tech-andgar/demo_test_technical_flutter_202501/actions/workflows/build.yml)
 ![coverage][coverage_badge]
+[![Coverage Status](https://coveralls.io/repos/github/DartForge/http_status/badge.svg?branch=main)](https://coveralls.io/github/tech-andgar/demo_test_technical_flutter_202501?branch=main)
+[![Star this Repo](https://img.shields.io/github/stars/DartForge/http_status.svg?style=flat)](https://github.com/tech-andgar/demo_test_technical_flutter_202501)
+
+</p>
 
 ---
 
 A Flutter application implementing a multi-step form with animations and state management.
 
-
-https://github.com/user-attachments/assets/3a960ee1-7c23-41c8-8712-83dce123a1fe
-
+https://github.com/user-attachments/assets/d8604321-6c7c-4aff-accb-c329ba0b9675
 
 ## Setup Requirements
 
