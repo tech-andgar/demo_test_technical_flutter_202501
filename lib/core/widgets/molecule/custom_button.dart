@@ -18,16 +18,16 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: MediaQuery.sizeOf(context).width * 0.94,
       child: ElevatedButton(
         onPressed: onTap,
         child: child ??
-            Text(
+            CustomText(
               label,
-              style: TextStyle(
-                fontFamily: FontFamily.futuraBook.value,
-                fontWeight: FontWeight.w700,
-              ),
+              fontFamily: FontFamily.futuraBook,
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+              color: Colors.black,
             ),
       ),
     );

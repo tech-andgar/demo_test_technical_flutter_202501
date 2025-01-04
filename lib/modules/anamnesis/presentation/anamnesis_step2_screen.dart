@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/widgets/widgets.dart';
+import '../../../core/core.dart';
 import '../view_model/anamnesis_steps_view_model.dart';
 
 class AnamnesisStepScreen extends ConsumerWidget {
@@ -18,48 +19,84 @@ class AnamnesisStepScreen extends ConsumerWidget {
     final viewModel = ref.watch(form2ViewModel.notifier);
     final state = ref.watch(form2ViewModel);
 
+    final sizedBox16 = SizedBox(height: 16.sp);
+    final sizedBox12 = SizedBox(height: 12.sp);
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: const Text('Bienvenido a tu nuevo comienzo')),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            spacing: 16,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
-              const Text(
+              const CustomText(
                 'Completa la siguiente información',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                fontFamily: FontFamily.futuraBook,
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
               ),
-              const CustomTextRequired(
+              sizedBox16,
+              const CustomText(
                 'Todos los campos son obligatorios',
                 isRequired: true,
               ),
-              const CustomTextRequired(
+              sizedBox16,
+              const CustomText(
                 'Tiene dolores frecuentes y no ha consultado al médico?',
                 isRequired: true,
               ),
+              sizedBox12,
               CustomToggleButton(
                 options: const ['Sí', 'No'],
                 onSelectionChanged: viewModel.setDoloresFrecuentes,
               ),
-              const CustomTextRequired(
+              sizedBox16,
+              const CustomText(
                 '¿Le ha dicho al médico que tiene algún problema en los huesos o en las articulaciones, que pueda desfavorecer con el ejercicio?',
                 isRequired: true,
               ),
+              sizedBox12,
               CustomToggleButton(
                 options: const ['Sí', 'No'],
                 onSelectionChanged: viewModel.setProblemaHuesosArticulaciones,
               ),
-              const Spacer(),
-              CustomButton(
-                label: 'Siguiente',
-                onTap: state.isValid ? () => context.push('/form1') : null,
-              ),
+              sizedBox16,
             ],
           ),
         ),
+        floatingActionButton: CustomButton(
+          label: 'Siguiente',
+          onTap: state.isValid ? () => openDialog(context) : null,
+        ),
       ),
+    );
+  }
+
+  Future<void> openDialog(BuildContext context) async {
+    await showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.black87,
+          title: const CustomText('Cuestionario finalizado', fontSize: 20),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Desarrollado por Andres Garcia (TECH-ANDGAR)'),
+                Text('Hecho por Flutter'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            CustomButton(
+              label: 'Ir a la pantalla de inicio',
+              onTap: () {
+                context.pushReplacement(RoutesName.anamnesisStep1);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

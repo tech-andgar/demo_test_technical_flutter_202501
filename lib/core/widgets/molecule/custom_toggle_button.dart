@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../widgets.dart';
+
 class CustomToggleButton extends StatefulWidget {
   const CustomToggleButton({
     required this.options,
@@ -59,10 +61,10 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
           },
           constraints: BoxConstraints(
             minHeight: 40.0,
-            minWidth: MediaQuery.sizeOf(context).width * .441275,
+            minWidth: MediaQuery.sizeOf(context).width * .4325,
           ),
           isSelected: isSelected,
-          children: widget.options.map(Text.new).toList(),
+          children: widget.options.map(CustomText.new).toList(),
         ),
       ],
     );
