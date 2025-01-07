@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizedBox = Padding(
+    final widgetChild = Padding(
       padding: inDialog ? EdgeInsets.zero : const EdgeInsets.only(left: 32),
       child: Align(
         alignment: Alignment.bottomCenter,
@@ -30,7 +30,6 @@ class CustomButton extends StatelessWidget {
             child: child ??
                 CustomText(
                   label,
-                  fontFamily: FontFamily.futuraBook,
                   fontWeight: FontWeight.w700,
                   fontSize: 18,
                   color: Colors.black,
@@ -40,6 +39,6 @@ class CustomButton extends StatelessWidget {
       ),
     );
 
-    return inDialog ? sizedBox : ResponsiveCenter(child: sizedBox);
+    return inDialog ? widgetChild : ResponsiveCenter(child: widgetChild);
   }
 }
