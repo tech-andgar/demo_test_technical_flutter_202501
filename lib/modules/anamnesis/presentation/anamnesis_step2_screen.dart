@@ -84,7 +84,13 @@ class AnamnesisStep2Screen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text('Desarrollado por Andres Garcia (TECH-ANDGAR)'),
-              Text('Hecho por Flutter'),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Text('Hecho por Flutter'),
+                  FlutterLogo(size: 24),
+                ],
+              ),
             ],
           ),
           actions: <Widget>[
