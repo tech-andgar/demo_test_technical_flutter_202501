@@ -13,7 +13,7 @@
 
 A Flutter application implementing a multi-step form with animations and state management.
 
-https://github.com/user-attachments/assets/d8604321-6c7c-4aff-accb-c329ba0b9675
+https://github.com/user-attachments/assets/41739672-8488-40d2-bd83-dd05675b2b7d
 
 ## Setup Requirements
 
