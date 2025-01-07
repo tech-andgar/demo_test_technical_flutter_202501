@@ -24,7 +24,7 @@ class AnamnesisStep1Screen extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: const Text('Bienvenido a tu nuevo comienzo')),
-        body: Padding(
+        body: ResponsiveCenterScrollable(
           padding: const EdgeInsets.all(16),
           child: ListView(
             children: [
