@@ -61,7 +61,7 @@ class AnamnesisStep1Screen extends ConsumerWidget {
                 onChanged: viewModel.updateEnfermedad,
                 decoration: const InputDecoration(labelText: 'Escribe aquí'),
               ),
-              sizedBox16,
+              const SizedBox(height: 80),
             ],
           ),
         ),

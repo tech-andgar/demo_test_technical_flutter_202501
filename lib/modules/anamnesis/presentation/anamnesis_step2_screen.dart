@@ -59,7 +59,7 @@ class AnamnesisStep2Screen extends ConsumerWidget {
                 options: const ['Sí', 'No'],
                 onSelectionChanged: viewModel.setProblemaHuesosArticulaciones,
               ),
-              sizedBox16,
+              const SizedBox(height: 80),
             ],
           ),
         ),
