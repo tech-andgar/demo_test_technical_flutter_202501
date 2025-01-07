@@ -80,13 +80,12 @@ class AnamnesisStep2Screen extends ConsumerWidget {
         return AlertDialog(
           backgroundColor: Colors.black87,
           title: const CustomText('Cuestionario finalizado', fontSize: 20),
-          content: const SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Desarrollado por Andres Garcia (TECH-ANDGAR)'),
-                Text('Hecho por Flutter'),
-              ],
-            ),
+          content: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('Desarrollado por Andres Garcia (TECH-ANDGAR)'),
+              Text('Hecho por Flutter'),
+            ],
           ),
           actions: <Widget>[
             CustomButton(
@@ -95,6 +94,7 @@ class AnamnesisStep2Screen extends ConsumerWidget {
                 Navigator.of(dialogContext).pop();
                 router.pushReplacement(RoutesName.anamnesisStep1);
               },
+              inDialog: true,
             ),
           ],
         );
