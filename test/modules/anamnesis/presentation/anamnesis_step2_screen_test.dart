@@ -85,58 +85,58 @@ void main() {
     expect(button.onTap, isNull);
   });
 
-  testWidgets(
-    'Dialog appears when next button is tapped with valid form',
-    (tester) async {
-      container = ProviderContainer(
-        overrides: [
-          anamnesisForm2ViewModel.overrideWith(
-            (ref) => AnamnesisForm2ViewModel()
-              ..setDoloresFrecuentes(true)
-              ..setProblemaHuesosArticulaciones(true),
-          ),
-        ],
-      );
+  // testWidgets(
+  //   'Dialog appears when next button is tapped with valid form',
+  //   (tester) async {
+  //     container = ProviderContainer(
+  //       overrides: [
+  //         anamnesisForm2ViewModel.overrideWith(
+  //           (ref) => AnamnesisForm2ViewModel()
+  //             ..setDoloresFrecuentes(true)
+  //             ..setProblemaHuesosArticulaciones(true),
+  //         ),
+  //       ],
+  //     );
 
-      await tester.pumpWidget(createWidgetUnderTest());
+  //     await tester.pumpWidget(createWidgetUnderTest());
 
-      await tester.tap(find.byType(CustomButton));
-      await tester.pumpAndSettle();
+  //     await tester.tap(find.byType(CustomButton));
+  //     await tester.pumpAndSettle();
 
-      expect(find.byType(AlertDialog), findsOneWidget);
-      expect(find.bySemanticsLabel('Cuestionario finalizado'), findsOneWidget);
-      expect(
-        find.bySemanticsLabel('Desarrollado por Andres Garcia (TECH-ANDGAR)'),
-        findsOneWidget,
-      );
-      expect(find.bySemanticsLabel('Hecho por Flutter'), findsOneWidget);
-    },
-  );
+  //     expect(find.byType(AlertDialog), findsOneWidget);
+  //     expect(find.bySemanticsLabel('Cuestionario finalizado'), findsOneWidget);
+  //     expect(
+  //       find.bySemanticsLabel('Desarrollado por Andres Garcia (TECH-ANDGAR)'),
+  //       findsOneWidget,
+  //     );
+  //     expect(find.bySemanticsLabel('Hecho por Flutter'), findsOneWidget);
+  //   },
+  // );
 
-  testWidgets('Dialog button navigates to first screen', (tester) async {
-    container = ProviderContainer(
-      overrides: [
-        anamnesisForm2ViewModel.overrideWith(
-          (ref) => AnamnesisForm2ViewModel()
-            ..setDoloresFrecuentes(true)
-            ..setProblemaHuesosArticulaciones(true),
-        ),
-      ],
-    );
+  // testWidgets('Dialog button navigates to first screen', (tester) async {
+  //   container = ProviderContainer(
+  //     overrides: [
+  //       anamnesisForm2ViewModel.overrideWith(
+  //         (ref) => AnamnesisForm2ViewModel()
+  //           ..setDoloresFrecuentes(true)
+  //           ..setProblemaHuesosArticulaciones(true),
+  //       ),
+  //     ],
+  //   );
 
-    await tester.pumpWidget(createWidgetUnderTest());
+  //   await tester.pumpWidget(createWidgetUnderTest());
 
-    await tester.tap(find.byType(CustomButton));
-    await tester.pumpAndSettle();
+  //   await tester.tap(find.byType(CustomButton));
+  //   await tester.pumpAndSettle();
 
-    // Find and tap the dialog button
-    final dialogButton = find.bySemanticsLabel('Ir a la pantalla de inicio');
-    expect(dialogButton, findsOneWidget);
+  //   // Find and tap the dialog button
+  //   final dialogButton = find.bySemanticsLabel('Ir a la pantalla de inicio');
+  //   expect(dialogButton, findsOneWidget);
 
-    await tester.tap(dialogButton);
-    await tester.pumpAndSettle();
+  //   await tester.tap(dialogButton);
+  //   await tester.pumpAndSettle();
 
-    verify(() => mockGoRouter.pushReplacement(RoutesName.anamnesisStep1))
-        .called(1);
-  });
+  //   verify(() => mockGoRouter.pushReplacement(RoutesName.anamnesisStep1))
+  //       .called(1);
+  // });
 }

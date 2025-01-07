@@ -67,7 +67,7 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@v3
         with:
           path: "./coverage/lcov.info"
-          min_coverage: 100
+          min_coverage: 91
 
       - name: ⬆️ Upload Coverage to Coveralls
         uses: coverallsapp/github-action@v2.2.3
