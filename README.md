@@ -29,27 +29,30 @@ Main packages used:
 
 - flutter_riverpod: ^2.6.1 (State Management)
 - go_router: ^14.3.0 (Navigation)
+- flutter_screenutil: ^5.9.3 (Responsive Design)
 
 Development dependencies:
 
 - flutter_lints: ^5.0.0
 - dart_code_linter: ^1.1.5
+- mocktail: ^1.0.4 (Mocking for tests)
+- flutter_coverage_badge: (Code coverage badge integration)
 
 ## Getting Started
 
-1. Clone the repository
+1. Clone the repository:
 
     ```bash
     git clone https://github.com/tech-andgar/demo_test_technical_flutter_202501.git
     ```
 
-2. Install dependencies
+2. Install dependencies:
 
     ```bash
     flutter pub get
     ```
 
-3. Run the application
+3. Run the application:
 
     ```bash
     flutter run
@@ -59,22 +62,22 @@ Development dependencies:
 
 ### State Management
 
-The application uses **Riverpod** as the state management solution. This choice was made for several reasons:
+The application uses **Riverpod** as the state management solution due to:
 
-- **Type Safety**: Riverpod provides compile-time safety and better IDE support
+- **Type Safety**: Provides compile-time safety and IDE support
 - **Dependency Injection**: Easy to manage and inject dependencies
-- **Testing**: Facilitates unit testing with easy mock providers
-- **Code Organization**: Clear separation of UI and business logic through ViewModels
+- **Testing**: Facilitates unit testing with mock providers
+- **Code Organization**: Clear separation of UI and business logic
 
 ### Navigation
 
-- Using **go_router** for declarative routing
+- Utilizes **go_router** for declarative routing
 - Custom transition animations between screens
-- Maintains navigation history for proper back navigation
+- Maintains navigation history for back navigation
 
 ### Form Validation
 
-- Real-time validation as user types
+- Real-time validation as the user types
 - Required field validation
 - Custom toggle buttons for boolean inputs
 - Disable/enable navigation based on form validity
@@ -92,6 +95,18 @@ lib/
 │       ├── presentation/
 │       └── view_model/
 └── main.dart
+```
+
+```mermaid
+graph TD;
+    main.dart --> Core
+    main.dart --> Modules
+    Core --> Routes
+    Core --> Theme
+    Core --> Widgets
+    Modules --> Anamnesis
+    Anamnesis --> Presentation
+    Anamnesis --> ViewModel
 ```
 
 ## Technical Documentation
@@ -117,42 +132,40 @@ Project configuration file containing:
 - Dependencies:
   - flutter_riverpod: State management
   - go_router: Navigation
+  - flutter_screenutil: Responsive design
 - Dev dependencies for testing and code quality
-- Font configurations for multiple Futura font variants
+- Font configurations for multiple `Futura` font variants
 
 ### Core Components
 
-Contains reusable components, routing, and theme configuration
+Contains reusable components, routing, and theme configuration.
 
 #### Routes
 
 - **names.dart**: Centralizes route name constants
 - **pages.dart**: Configures GoRouter with route definitions
-- **page_route_builder.dart**: Implements custom page transitions with slide animations
+- **page_route_builder.dart**: Implements custom page transitions
 
 #### Theme
 
-- Implements dark theme configuration
-- Defines consistent typography using custom fonts
+- Dark theme configuration
+- Consistent typography using custom `Futura` fonts
 - Configures custom styles for:
   - Buttons
   - Input fields
   - Toggle buttons
-  - Text styles
 
 #### Widgets
 
 Organized in atomic design pattern:
 
 - **Atoms**: Basic UI components
-  - CustomTextRequired: Text with required field indicator
+  - CustomText: Text with a required field indicator
 - **Molecules**: Composite components
   - CustomButton: Reusable button component
   - CustomToggleButton: Two-state toggle component
 
 ### Code Quality
-
-The project enforces high code quality standards through:
 
 - Strict static analysis rules
 - Comprehensive linting configuration
@@ -169,15 +182,25 @@ The project enforces high code quality standards through:
 2. **Accessibility**
    - Semantic labels for required fields
    - Clear error states
-   - Proper contrast ratios
-
 3. **Typography**
-   - Multiple custom Futura font variants
+   - Multiple custom `Futura` font variants
    - Consistent text styling through theme
 
 4. **Custom Widgets**
    - `CustomButton`: Reusable button component
    - `CustomToggleButton`: Two-state toggle component
-   - `CustomTextRequired`: Text with required field indicator
+   - `CustomText`: Text with required field indicator
+
+## Testing
+
+### Unit Tests
+
+- Utilizes **mocktail** for dependency mocking
+- Clear separation of test files by module
+
+### Coverage Badge
+
+- Configured using **flutter_coverage_badge**
+- Generates a code coverage badge for the project
 
 [coverage_badge]: coverage_badge.svg
