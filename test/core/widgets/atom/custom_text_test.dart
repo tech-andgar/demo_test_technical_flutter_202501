@@ -1,6 +1,5 @@
 import 'package:demo_test_technical_flutter_202501/core/widgets/atom/custom_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -11,14 +10,11 @@ void main() {
       'renders text correctly without required indicator',
       (WidgetTester tester) async {
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => const MaterialApp(
-              home: Scaffold(
-                body: CustomText(
-                  'Hello World',
-                  isRequired: false,
-                ),
+          const MaterialApp(
+            home: Scaffold(
+              body: CustomText(
+                'Hello World',
+                isRequired: false,
               ),
             ),
           ),
@@ -36,14 +32,11 @@ void main() {
       'renders text correctly with required indicator',
       (WidgetTester tester) async {
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => const MaterialApp(
-              home: Scaffold(
-                body: CustomText(
-                  'Hello World',
-                  isRequired: true,
-                ),
+          const MaterialApp(
+            home: Scaffold(
+              body: CustomText(
+                'Hello World',
+                isRequired: true,
               ),
             ),
           ),
@@ -65,15 +58,12 @@ void main() {
       'applies custom font size and color correctly',
       (WidgetTester tester) async {
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => const MaterialApp(
-              home: Scaffold(
-                body: CustomText(
-                  'Custom Style',
-                  fontSize: 20,
-                  color: Colors.blue,
-                ),
+          const MaterialApp(
+            home: Scaffold(
+              body: CustomText(
+                'Custom Style',
+                fontSize: 20,
+                color: Colors.blue,
               ),
             ),
           ),
@@ -82,7 +72,7 @@ void main() {
         final richTextWidget = tester.widget<RichText>(find.byType(RichText));
         final textStyle = (richTextWidget.text as TextSpan).children?[0].style;
 
-        expect(textStyle?.fontSize, 20.sp);
+        expect(textStyle?.fontSize, 20);
         expect(textStyle?.color, Colors.blue);
       },
     );

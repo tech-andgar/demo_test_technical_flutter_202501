@@ -29,7 +29,6 @@ Main packages used:
 
 - flutter_riverpod: ^2.6.1 (State Management)
 - go_router: ^14.3.0 (Navigation)
-- flutter_screenutil: ^5.9.3 (Responsive Design)
 
 Development dependencies:
 
@@ -132,7 +131,6 @@ Project configuration file containing:
 - Dependencies:
   - flutter_riverpod: State management
   - go_router: Navigation
-  - flutter_screenutil: Responsive design
 - Dev dependencies for testing and code quality
 - Font configurations for multiple `Futura` font variants
 

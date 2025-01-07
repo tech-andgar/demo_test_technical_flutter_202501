@@ -2,7 +2,6 @@ import 'package:demo_test_technical_flutter_202501/core/core.dart';
 import 'package:demo_test_technical_flutter_202501/modules/modules.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
@@ -27,18 +26,11 @@ void main() {
   Widget createWidgetUnderTest({Widget? child}) {
     return UncontrolledProviderScope(
       container: container,
-      child: ScreenUtilInit(
-        designSize: const Size(800, 1200),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, _) {
-          return MaterialApp(
-            home: InheritedGoRouter(
-              goRouter: mockGoRouter,
-              child: child ?? const AnamnesisStep1Screen(),
-            ),
-          );
-        },
+      child: MaterialApp(
+        home: InheritedGoRouter(
+          goRouter: mockGoRouter,
+          child: child ?? const AnamnesisStep1Screen(),
+        ),
       ),
     );
   }
@@ -88,15 +80,8 @@ void main() {
     await tester.pumpWidget(
       UncontrolledProviderScope(
         container: container,
-        child: ScreenUtilInit(
-          designSize: const Size(800, 1200),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return const MaterialApp(
-              home: AnamnesisStep1Screen(),
-            );
-          },
+        child: const MaterialApp(
+          home: AnamnesisStep1Screen(),
         ),
       ),
     );
@@ -133,15 +118,8 @@ void main() {
     await tester.pumpWidget(
       UncontrolledProviderScope(
         container: container,
-        child: ScreenUtilInit(
-          designSize: const Size(800, 1200),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return const MaterialApp(
-              home: AnamnesisStep1Screen(),
-            );
-          },
+        child: const MaterialApp(
+          home: AnamnesisStep1Screen(),
         ),
       ),
     );
@@ -178,18 +156,11 @@ void main() {
       await tester.pumpWidget(
         UncontrolledProviderScope(
           container: container,
-          child: ScreenUtilInit(
-            designSize: const Size(800, 1200),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) {
-              return MaterialApp(
-                home: InheritedGoRouter(
-                  goRouter: mockGoRouter,
-                  child: const AnamnesisStep1Screen(),
-                ),
-              );
-            },
+          child: MaterialApp(
+            home: InheritedGoRouter(
+              goRouter: mockGoRouter,
+              child: const AnamnesisStep1Screen(),
+            ),
           ),
         ),
       );

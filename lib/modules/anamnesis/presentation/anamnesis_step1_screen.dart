@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
@@ -19,14 +18,14 @@ class AnamnesisStep1Screen extends ConsumerWidget {
     final viewModel = ref.watch(anamnesisForm1ViewModel.notifier);
     final state = ref.watch(anamnesisForm1ViewModel);
 
-    final sizedBox16 = SizedBox(height: 16.sp);
-    final sizedBox12 = SizedBox(height: 12.sp);
+    const sizedBox16 = SizedBox(height: 16);
+    const sizedBox12 = SizedBox(height: 12);
 
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: const Text('Bienvenido a tu nuevo comienzo')),
         body: Padding(
-          padding: EdgeInsets.all(16.sp),
+          padding: const EdgeInsets.all(16),
           child: ListView(
             children: [
               const CustomText(

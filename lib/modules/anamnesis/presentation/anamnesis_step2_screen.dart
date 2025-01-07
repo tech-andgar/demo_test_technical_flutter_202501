@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
@@ -19,8 +18,8 @@ class AnamnesisStep2Screen extends ConsumerWidget {
     final viewModel = ref.watch(anamnesisForm2ViewModel.notifier);
     final state = ref.watch(anamnesisForm2ViewModel);
 
-    final sizedBox16 = SizedBox(height: 16.sp);
-    final sizedBox12 = SizedBox(height: 12.sp);
+    const sizedBox16 = SizedBox(height: 16);
+    const sizedBox12 = SizedBox(height: 12);
 
     return SafeArea(
       child: Scaffold(

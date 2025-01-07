@@ -5,13 +5,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ScreenUtil.ensureScreenSize();
 
   runApp(
     const ProviderScope(
@@ -55,8 +53,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context);
-
     return MaterialApp.router(
       title: 'Demo Test Technical 202501 - Andres Garcia',
       routeInformationParser: AppRoutes.router.routeInformationParser,
