@@ -4,7 +4,7 @@ on: # rebuild any PRs and main branch changes
   push:
     branches: ["main"]
   pull_request:
-    # branches: ["main", "feature/*"]
+    branches: ["main", "feature/*"]
   workflow_dispatch:
 
 jobs:
@@ -86,3 +86,16 @@ jobs:
           author_email: dev@tech-andgar.me
           message: 'Updated coverage_badge.svg'
           add: 'coverage_badge.svg'
+
+      - name: Build Flutter Web
+        run: flutter build web --release --base-href="/demo_test_technical_flutter_202501/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          publish_branch: dist
+          user_name: 'Andrés García'
+          user_email: 'dev@tech-andgar.me'
+          commit_message: 'Publish to gh-pages'
