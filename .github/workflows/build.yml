@@ -13,6 +13,8 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     permissions:
+      pull-requests: write
+      repository-projects: write
       contents: write
     strategy:
       fail-fast: false
@@ -42,6 +44,9 @@ jobs:
         name: Disabled Analytics Dart
         run: dart --disable-analytics
 
+      - name: Populate the Flutter tool's cache of binary artifacts
+        run: flutter precache
+
       - id: checking_version_flutter
         name: 🔍 Check version Flutter is installed
         run: flutter --version
@@ -67,7 +72,20 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@v3
         with:
           path: "./coverage/lcov.info"
-          min_coverage: 91
+          min_coverage: 95
+
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
+
+      - name: Report Code Coverage
+        uses: zgosalvez/github-actions-report-lcov@v4
+        with:
+          coverage-files: coverage/lcov.info
+          minimum-coverage: 95
+          artifact-name: code-coverage-report
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # working-directory: apps/my-first-app
+          update-comment: true
 
       - name: ⬆️ Upload Coverage to Coveralls
         uses: coverallsapp/github-action@v2.2.3
@@ -78,17 +96,6 @@ jobs:
       - id: run_package_flutter_coverage_badge
         name: Run package flutter_coverage_badge
         run: dart run flutter_coverage_badge
-
-      - name: Setup LCOV
-        uses: hrishikesh-kadam/setup-lcov@v1
-
-      - name: Report Code Coverage
-        uses: zgosalvez/github-actions-report-lcov@v3
-        with:
-          coverage-files: coverage/lcov.info
-          minimum-coverage: 95
-          artifact-name: code-coverage-report
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
