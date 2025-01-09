@@ -2,6 +2,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+const factorHorizontal = .95;
+
 /// A responsive centered scrollable layout that solves the problem described
 /// here: https://rydmike.com/blog_layout_and_theming
 /// Note that if a non-null ScrollController is given, it must be passed as
@@ -31,10 +33,25 @@ class ResponsiveCenterScrollable extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.controller,
   });
+
+  final Widget child;
+  final ScrollController? controller;
   final double? maxContentWidth;
   final EdgeInsetsGeometry padding;
-  final ScrollController? controller;
-  final Widget child;
+
+  void _onPointerSignal(PointerSignalEvent pointerSignal) {
+    final c = controller;
+    if (pointerSignal is PointerScrollEvent && c != null) {
+      final newOffset = c.offset + pointerSignal.scrollDelta.dy;
+      if (newOffset < c.position.minScrollExtent) {
+        c.jumpTo(c.position.minScrollExtent);
+      } else if (newOffset > c.position.maxScrollExtent) {
+        c.jumpTo(c.position.maxScrollExtent);
+      } else {
+        c.jumpTo(newOffset);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +64,7 @@ class ResponsiveCenterScrollable extends StatelessWidget {
             builder: (context, constraints) {
               final responsiveWidth = (constraints.maxWidth > 1080)
                   ? constraints.maxWidth * .5
-                  : constraints.maxWidth * .9;
+                  : constraints.maxWidth * factorHorizontal;
 
               return ConstrainedBox(
                 constraints: BoxConstraints(
@@ -68,20 +85,6 @@ class ResponsiveCenterScrollable extends StatelessWidget {
       ),
     );
   }
-
-  void _onPointerSignal(PointerSignalEvent pointerSignal) {
-    final c = controller;
-    if (pointerSignal is PointerScrollEvent && c != null) {
-      final newOffset = c.offset + pointerSignal.scrollDelta.dy;
-      if (newOffset < c.position.minScrollExtent) {
-        c.jumpTo(c.position.minScrollExtent);
-      } else if (newOffset > c.position.maxScrollExtent) {
-        c.jumpTo(c.position.maxScrollExtent);
-      } else {
-        c.jumpTo(newOffset);
-      }
-    }
-  }
 }
 
 /// A simpler variant of ResponsiveCenterScrollable for non-scrollable layouts.
@@ -97,9 +100,10 @@ class ResponsiveCenter extends StatelessWidget {
     this.maxContentWidth,
     this.padding = EdgeInsets.zero,
   });
+
+  final Widget child;
   final double? maxContentWidth;
   final EdgeInsetsGeometry padding;
-  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -112,8 +116,8 @@ class ResponsiveCenter extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final responsiveWidth = (constraints.maxWidth > 1080)
-              ? constraints.maxWidth * .5
-              : constraints.maxWidth * .9;
+              ? constraints.maxWidth * 0.5
+              : constraints.maxWidth * factorHorizontal;
 
           return ConstrainedBox(
             constraints: BoxConstraints(
