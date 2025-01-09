@@ -19,23 +19,17 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetChild = Padding(
-      padding: inDialog ? EdgeInsets.zero : const EdgeInsets.only(left: 32),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: SizedBox(
-          width: MediaQuery.sizeOf(context).width * 0.94,
-          child: ElevatedButton(
-            onPressed: onTap,
-            child: child ??
-                CustomText(
-                  label,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 18,
-                  color: Colors.black,
-                ),
-          ),
-        ),
+    final widgetChild = SizedBox(
+      width: MediaQuery.sizeOf(context).width,
+      child: ElevatedButton(
+        onPressed: onTap,
+        child: child ??
+            CustomText(
+              label,
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+              color: Colors.black,
+            ),
       ),
     );
 

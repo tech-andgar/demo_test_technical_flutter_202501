@@ -24,52 +24,48 @@ class AnamnesisStep1Screen extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: const Text('Bienvenido a tu nuevo comienzo')),
-        body: ResponsiveCenterScrollable(
-          padding: const EdgeInsets.all(16),
-          child: ListView(
-            children: [
-              const CustomText(
-                'Completa la siguiente información',
-                fontFamily: FontFamily.futuraBook,
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
+        body: CustomTemplatePage(
+          content: [
+            const CustomText(
+              'Completa la siguiente información',
+              fontFamily: FontFamily.futuraBook,
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+            ),
+            sizedBox16,
+            const CustomText(
+              'Todos los campos son obligatorios',
+              isRequired: true,
+            ),
+            sizedBox16,
+            const CustomText(
+              '¿Ha tenido operaciones? ¿Cuáles y hace cuanto tiempo?',
+              isRequired: true,
+            ),
+            sizedBox12,
+            TextField(
+              onChanged: viewModel.updateOperacion,
+              decoration: const InputDecoration(
+                labelText: 'Escribe aquí',
               ),
-              sizedBox16,
-              const CustomText(
-                'Todos los campos son obligatorios',
-                isRequired: true,
-              ),
-              sizedBox16,
-              const CustomText(
-                '¿Ha tenido operaciones? ¿Cuáles y hace cuanto tiempo?',
-                isRequired: true,
-              ),
-              sizedBox12,
-              TextField(
-                onChanged: viewModel.updateOperacion,
-                decoration: const InputDecoration(
-                  labelText: 'Escribe aquí',
-                ),
-              ),
-              sizedBox16,
-              const CustomText(
-                '¿Tiene o tuvo alguna enfermedad diagnosticada o tratada por un médico?',
-                isRequired: true,
-              ),
-              sizedBox12,
-              TextField(
-                onChanged: viewModel.updateEnfermedad,
-                decoration: const InputDecoration(labelText: 'Escribe aquí'),
-              ),
-              const SizedBox(height: 80),
-            ],
+            ),
+            sizedBox16,
+            const CustomText(
+              '¿Tiene o tuvo alguna enfermedad diagnosticada o tratada por un médico?',
+              isRequired: true,
+            ),
+            sizedBox12,
+            TextField(
+              onChanged: viewModel.updateEnfermedad,
+              decoration: const InputDecoration(labelText: 'Escribe aquí'),
+            ),
+          ],
+          bottomButton: CustomButton(
+            label: 'Siguiente',
+            onTap: state.isValid
+                ? () => context.push(RoutesName.anamnesisStep2)
+                : null,
           ),
-        ),
-        floatingActionButton: CustomButton(
-          label: 'Siguiente',
-          onTap: state.isValid
-              ? () => context.push(RoutesName.anamnesisStep2)
-              : null,
         ),
       ),
     );

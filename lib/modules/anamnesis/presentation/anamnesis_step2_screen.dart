@@ -26,8 +26,8 @@ class AnamnesisStep2Screen extends ConsumerWidget {
         appBar: AppBar(title: const Text('Bienvenido a tu nuevo comienzo')),
         body: ResponsiveCenterScrollable(
           padding: const EdgeInsets.all(16.0),
-          child: ListView(
-            children: [
+          child: CustomTemplatePage(
+            content: [
               const CustomText(
                 'Completa la siguiente información',
                 fontFamily: FontFamily.futuraBook,
@@ -61,11 +61,11 @@ class AnamnesisStep2Screen extends ConsumerWidget {
               ),
               const SizedBox(height: 80),
             ],
+            bottomButton: CustomButton(
+              label: 'Siguiente',
+              onTap: state.isValid ? () => openDialog(context) : null,
+            ),
           ),
-        ),
-        floatingActionButton: CustomButton(
-          label: 'Siguiente',
-          onTap: state.isValid ? () => openDialog(context) : null,
         ),
       ),
     );
