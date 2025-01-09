@@ -79,6 +79,17 @@ jobs:
         name: Run package flutter_coverage_badge
         run: dart run flutter_coverage_badge
 
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
+
+      - name: Report Code Coverage
+        uses: zgosalvez/github-actions-report-lcov@v3
+        with:
+          coverage-files: coverage/lcov.info
+          minimum-coverage: 95
+          artifact-name: code-coverage-report
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
