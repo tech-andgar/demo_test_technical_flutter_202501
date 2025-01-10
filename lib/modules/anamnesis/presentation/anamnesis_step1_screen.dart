@@ -44,7 +44,7 @@ class AnamnesisStep1Screen extends ConsumerWidget {
             ),
             sizedBox12,
             TextField(
-              onChanged: viewModel.updateOperacion,
+              onChanged: viewModel.updateOperation,
               decoration: const InputDecoration(
                 labelText: 'Escribe aquí',
               ),
@@ -56,7 +56,7 @@ class AnamnesisStep1Screen extends ConsumerWidget {
             ),
             sizedBox12,
             TextField(
-              onChanged: viewModel.updateEnfermedad,
+              onChanged: viewModel.updateDisease,
               decoration: const InputDecoration(labelText: 'Escribe aquí'),
             ),
           ],
