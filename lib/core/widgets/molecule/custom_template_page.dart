@@ -31,7 +31,7 @@ class CustomTemplatePage extends StatelessWidget {
                     left: widthSize * factorHorizontal,
                     right: widthSize * factorHorizontal,
                     top: 24,
-                    bottom: heightSize * 0.5,
+                    bottom: heightSize * 0.3,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
