@@ -45,6 +45,9 @@ class AnamnesisStep1Screen extends ConsumerWidget {
             sizedBox12,
             TextField(
               onChanged: viewModel.updateOperation,
+              onTapOutside: (_) {
+                FocusScope.of(context).unfocus();
+              },
               decoration: const InputDecoration(
                 labelText: 'Escribe aquí',
               ),
@@ -57,6 +60,9 @@ class AnamnesisStep1Screen extends ConsumerWidget {
             sizedBox12,
             TextField(
               onChanged: viewModel.updateDisease,
+              onTapOutside: (_) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               decoration: const InputDecoration(labelText: 'Escribe aquí'),
             ),
           ],
