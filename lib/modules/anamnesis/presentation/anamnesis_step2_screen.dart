@@ -24,47 +24,44 @@ class AnamnesisStep2Screen extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: const Text('Bienvenido a tu nuevo comienzo')),
-        body: ResponsiveCenterScrollable(
-          padding: const EdgeInsets.all(16.0),
-          child: CustomTemplatePage(
-            content: [
-              const CustomText(
-                'Completa la siguiente información',
-                fontFamily: FontFamily.futuraBook,
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-              ),
-              sizedBox16,
-              const CustomText(
-                'Todos los campos son obligatorios',
-                isRequired: true,
-              ),
-              sizedBox16,
-              const CustomText(
-                'Tiene dolores frecuentes y no ha consultado al médico?',
-                isRequired: true,
-              ),
-              sizedBox12,
-              CustomToggleButton(
-                options: const ['Sí', 'No'],
-                onSelectionChanged: viewModel.setDoloresFrecuentes,
-              ),
-              sizedBox16,
-              const CustomText(
-                '¿Le ha dicho al médico que tiene algún problema en los huesos o en las articulaciones, que pueda desfavorecer con el ejercicio?',
-                isRequired: true,
-              ),
-              sizedBox12,
-              CustomToggleButton(
-                options: const ['Sí', 'No'],
-                onSelectionChanged: viewModel.setProblemaHuesosArticulaciones,
-              ),
-              const SizedBox(height: 80),
-            ],
-            bottomButton: CustomButton(
-              label: 'Siguiente',
-              onTap: state.isValid ? () => openDialog(context) : null,
+        body: CustomTemplatePage(
+          content: [
+            const CustomText(
+              'Completa la siguiente información',
+              fontFamily: FontFamily.futuraBook,
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
             ),
+            sizedBox16,
+            const CustomText(
+              'Todos los campos son obligatorios',
+              isRequired: true,
+            ),
+            sizedBox16,
+            const CustomText(
+              'Tiene dolores frecuentes y no ha consultado al médico?',
+              isRequired: true,
+            ),
+            sizedBox12,
+            CustomToggleButton(
+              options: const ['Sí', 'No'],
+              onSelectionChanged: viewModel.setFrequentPain,
+            ),
+            sizedBox16,
+            const CustomText(
+              '¿Le ha dicho al médico que tiene algún problema en los huesos o en las articulaciones, que pueda desfavorecer con el ejercicio?',
+              isRequired: true,
+            ),
+            sizedBox12,
+            CustomToggleButton(
+              options: const ['Sí', 'No'],
+              onSelectionChanged: viewModel.setProblemBonesJoints,
+            ),
+            const SizedBox(height: 80),
+          ],
+          bottomButton: CustomButton(
+            label: 'Siguiente',
+            onTap: state.isValid ? () => openDialog(context) : null,
           ),
         ),
       ),
