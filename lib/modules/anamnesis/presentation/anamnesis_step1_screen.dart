@@ -7,16 +7,24 @@ import 'package:go_router/go_router.dart';
 import '../../../core/core.dart';
 import '../view_model/anamnesis_steps_view_model.dart';
 
-class AnamnesisStep1Screen extends ConsumerWidget {
+class AnamnesisStep1Screen extends ConsumerStatefulWidget {
   const AnamnesisStep1Screen({super.key});
 
   /// Route name: `/anamnesis_step1`.
   static const String routeName = '/anamnesis_step1';
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.watch(anamnesisForm1ViewModel.notifier);
-    final state = ref.watch(anamnesisForm1ViewModel);
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _AnamnesisStep1ScreenState();
+}
+
+class _AnamnesisStep1ScreenState extends ConsumerState<AnamnesisStep1Screen> {
+  late AnamnesisForm1ViewModel viewModel;
+
+  @override
+  Widget build(BuildContext context) {
+    viewModel = ref.watch(anamnesisForm1ViewModel.notifier);
+    late final state = ref.watch(anamnesisForm1ViewModel);
 
     const sizedBox16 = SizedBox(height: 16);
     const sizedBox12 = SizedBox(height: 12);
@@ -75,5 +83,11 @@ class AnamnesisStep1Screen extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => viewModel.clean());
   }
 }
