@@ -92,7 +92,7 @@ class AnamnesisStep2Screen extends ConsumerWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      flex: 4,
+                      flex: 21,
                       child: ListView(
                         shrinkWrap: true,
                         children: <Widget>[
@@ -157,12 +157,13 @@ class AnamnesisStep2Screen extends ConsumerWidget {
                       ),
                     ),
                     Expanded(
+                      flex: 10,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           const Text(
-                            'Desarrollado por Andres Garcia \n(TECH-ANDGAR)',
+                            'Desarrollado por Andres Garcia ® (TECH-ANDGAR)',
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
