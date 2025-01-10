@@ -74,8 +74,8 @@ void main() {
     await tester.pump();
 
     final state = container.read(anamnesisForm2ViewModel);
-    expect(state.doloresFrecuentes, isTrue);
-    expect(state.problemaHuesosArticulaciones, isTrue);
+    expect(state.painFrequent, isTrue);
+    expect(state.problemBonesJoints, isTrue);
   });
 
   testWidgets('Next button is disabled when form is invalid', (tester) async {
