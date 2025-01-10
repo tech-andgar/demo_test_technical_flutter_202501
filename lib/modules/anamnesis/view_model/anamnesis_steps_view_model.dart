@@ -14,7 +14,8 @@ class AnamnesisForm1ViewModel extends StateNotifier<AnamnesisForm1State> {
 
   void updateOperation(String value) =>
       state = state.copyWith(operation: value);
-  }
+
+  void clean() => state = AnamnesisForm1State();
 }
 
 class AnamnesisForm1State {
