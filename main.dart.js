@@ -36672,7 +36672,7 @@ A.UK.prototype={
 $3(a,b,c){var s=null,r=b.pq($.alk(),t.x2),q=b.pq($.aoI(),t.EF),p=A.br(a,B.dB,t.w).w,o=A.a0Q(new A.cD(r.b,!1,B.ak,16,1.5,B.aR,B.i,s),B.BB),n=A.a0Q(new A.cD(r.a,!1,B.ak,16,1.5,B.aR,B.i,s),B.Bz),m=A.a0Q(new A.cD(q.b===!0?"Si, tiene dolores frecuentes":"Sin dolores frecuentes",!1,B.ak,16,1.5,B.aR,B.i,s),B.Bt),l=t.E
 m=A.b([B.Bu,B.bO,B.Bs,B.Lk,o,n,m,A.a0Q(new A.cD(q.a===!0?"Problema en huesos o articulaciones":"Sin problemas en huesos o articulaciones",!1,B.ak,16,1.5,B.aR,B.i,s),B.Bv)],l)
 n=A.av([null,0],t.LO,t.S)
-return new A.pF(B.By,A.m9(A.lc(A.b([A.am6(new A.I6(new A.a9k(!0,!0,!0,m,n),s,B.aO,!1,s,s,B.yq,!0,s,8,B.aj,B.Jr,s,B.a2,B.aw,s),4),A.am6(A.lc(A.b([B.Qq,A.asl(A.b([A.bJ(s,s,B.CC,!1,s,s,!1,!1,s,s,s,"Hecho por Flutter",s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s)],l),B.b8,B.ef,B.bJ)],l),B.c_,B.ef,B.bJ,B.aN),1)],l),B.b8,B.b2,B.bJ,B.aN),p.a.b*0.5,17976931348623157e292),A.b([A.alP(!0,"Ir a la pantalla de inicio",new A.UJ(this.a,this.b))],l),B.D,s)},
+return new A.pF(B.By,A.m9(A.lc(A.b([A.am6(new A.I6(new A.a9k(!0,!0,!0,m,n),s,B.aO,!1,s,s,B.yq,!0,s,8,B.aj,B.Jr,s,B.a2,B.aw,s),21),A.am6(A.lc(A.b([B.Qr,A.asl(A.b([A.bJ(s,s,B.CC,!1,s,s,!1,!1,s,s,s,"Hecho por Flutter",s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s)],l),B.b8,B.ef,B.bJ)],l),B.c_,B.ef,B.bJ,B.aN),10)],l),B.b8,B.b2,B.bJ,B.aN),p.a.b*0.5,17976931348623157e292),A.b([A.alP(!0,"Ir a la pantalla de inicio",new A.UJ(this.a,this.b))],l),B.D,s)},
 $S:286}
 A.UJ.prototype={
 $0(){var s,r
@@ -76013,7 +76013,7 @@ A.qU.prototype={
 J(a){var s=null,r=A.alz(B.Qs),q=this.c
 q=q==null?s:"GoException: "+q.a
 if(q==null)q="page not found"
-return A.amP(r,A.jn(A.lc(A.b([new A.z6(q,s),A.aa0(B.Qr,s,new A.a3u(a),s)],t.E),B.b8,B.fI,B.bJ,B.aN),s,s))}}
+return A.amP(r,A.jn(A.lc(A.b([new A.z6(q,s),A.aa0(B.Qq,s,new A.a3u(a),s)],t.E),B.b8,B.fI,B.bJ,B.aN),s,s))}}
 A.a3u.prototype={
 $0(){return A.a_q(this.a).GE("/",null)},
 $S:0}
@@ -83332,8 +83332,8 @@ B.Q1=new A.k(!0,B.i,null,"Roboto",null,null,null,null,null,null,null,null,null,n
 B.P4=new A.k(!0,B.i,null,"Roboto",null,null,null,null,null,null,null,null,null,null,null,null,null,B.e,null,null,null,"whiteMountainView labelSmall",null,null,null,null)
 B.Qo=new A.dd(B.Pi,B.N0,B.NV,B.PC,B.MK,B.MJ,B.Mj,B.P2,B.PQ,B.ML,B.Nb,B.OW,B.Mw,B.Q1,B.P4)
 B.Qp=new A.fN("Page Not Found",null,B.hk,null,null,null,null,null,null)
-B.Qq=new A.fN("Desarrollado por Andres Garcia \n(TECH-ANDGAR)",null,null,null,null,null,null,null,null)
-B.Qr=new A.fN("Home",null,null,null,null,null,null,null,null)
+B.Qq=new A.fN("Home",null,null,null,null,null,null,null,null)
+B.Qr=new A.fN("Desarrollado por Andres Garcia \xae (TECH-ANDGAR)",null,null,null,null,null,null,null,null)
 B.Qs=new A.fN("Page Not Found",null,null,null,null,null,null,null,null)
 B.xH=new A.fN("Bienvenido a tu nuevo comienzo",null,null,null,null,null,null,null,null)
 B.O9=new A.k(!0,B.i,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
