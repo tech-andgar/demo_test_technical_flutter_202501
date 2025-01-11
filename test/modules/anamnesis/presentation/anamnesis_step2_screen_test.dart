@@ -62,16 +62,17 @@ void main() {
 
     final toggleButtons = find.byType(ToggleButtons);
     expect(toggleButtons, findsNWidgets(2));
+    await tester.pumpAndSettle();
 
     final customTextWidgets = find.byWidgetPredicate(
       (widget) => widget is CustomText,
     );
 
     await tester.tap(customTextWidgets.at(3));
-    await tester.pump();
+    await tester.pumpAndSettle();
 
     await tester.tap(customTextWidgets.at(6));
-    await tester.pump();
+    await tester.pumpAndSettle();
 
     final state = container.read(anamnesisForm2ViewModel);
     expect(state.painFrequent, isTrue);
