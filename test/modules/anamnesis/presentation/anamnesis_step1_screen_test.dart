@@ -136,7 +136,7 @@ void main() {
       // Act
       await tester.enterText(find.byType(TextField).first, 'Test operation');
       await tester.enterText(find.byType(TextField).last, 'Test illness');
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       // Assert
       final button = tester.widget<CustomButton>(find.byType(CustomButton));
