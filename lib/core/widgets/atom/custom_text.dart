@@ -1,7 +1,6 @@
 //  Created in Dart by Andres Garcia (TECH-ANDGAR) on 2025-01-03.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core.dart';
 
@@ -38,15 +37,15 @@ class CustomText extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: fontFamily.value,
                   fontWeight: fontWeight,
-                  fontSize: fontSize.sp,
+                  fontSize: fontSize,
                   height: height,
                   color: color,
                 ),
               ),
               if (isRequired)
-                TextSpan(
+                const TextSpan(
                   text: '*',
-                  style: TextStyle(color: Colors.red, fontSize: 14.sp),
+                  style: TextStyle(color: Colors.red, fontSize: 14),
                 ),
             ],
           ),

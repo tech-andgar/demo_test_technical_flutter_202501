@@ -2,7 +2,6 @@
 
 import 'package:demo_test_technical_flutter_202501/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -34,15 +33,12 @@ void main() {
         bool? selectedValue;
 
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => MaterialApp(
-              home: CustomToggleButton(
-                options: const ['Yes', 'No'],
-                onSelectionChanged: (value) {
-                  selectedValue = value;
-                },
-              ),
+          MaterialApp(
+            home: CustomToggleButton(
+              options: const ['Yes', 'No'],
+              onSelectionChanged: (value) {
+                selectedValue = value;
+              },
             ),
           ),
         );
@@ -68,16 +64,13 @@ void main() {
         bool? selectedValue;
 
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => MaterialApp(
-              home: Scaffold(
-                body: CustomToggleButton(
-                  options: const ['Yes', 'No'],
-                  onSelectionChanged: (value) {
-                    selectedValue = value;
-                  },
-                ),
+          MaterialApp(
+            home: Scaffold(
+              body: CustomToggleButton(
+                options: const ['Yes', 'No'],
+                onSelectionChanged: (value) {
+                  selectedValue = value;
+                },
               ),
             ),
           ),
@@ -111,16 +104,13 @@ void main() {
         bool? selectedValue;
 
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => MaterialApp(
-              home: Scaffold(
-                body: CustomToggleButton(
-                  options: const ['Yes', 'No'],
-                  onSelectionChanged: (value) {
-                    selectedValue = value;
-                  },
-                ),
+          MaterialApp(
+            home: Scaffold(
+              body: CustomToggleButton(
+                options: const ['Yes', 'No'],
+                onSelectionChanged: (value) {
+                  selectedValue = value;
+                },
               ),
             ),
           ),
@@ -177,14 +167,11 @@ void main() {
         const options = ['Option1', 'Option2'];
 
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => MaterialApp(
-              home: Scaffold(
-                body: CustomToggleButton(
-                  options: options,
-                  onSelectionChanged: (_) {},
-                ),
+          MaterialApp(
+            home: Scaffold(
+              body: CustomToggleButton(
+                options: options,
+                onSelectionChanged: (_) {},
               ),
             ),
           ),
@@ -207,14 +194,11 @@ void main() {
       'should have correct constraints',
       (WidgetTester tester) async {
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => MaterialApp(
-              home: Scaffold(
-                body: CustomToggleButton(
-                  options: const ['Yes', 'No'],
-                  onSelectionChanged: (_) {},
-                ),
+          MaterialApp(
+            home: Scaffold(
+              body: CustomToggleButton(
+                options: const ['Yes', 'No'],
+                onSelectionChanged: (_) {},
               ),
             ),
           ),

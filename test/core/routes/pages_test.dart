@@ -1,7 +1,6 @@
 import 'package:demo_test_technical_flutter_202501/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
@@ -43,16 +42,7 @@ void main() {
         // Create a widget to get BuildContext
         await tester.pumpWidget(
           ProviderScope(
-            child: ScreenUtilInit(
-              designSize: const Size(375, 812),
-              minTextAdapt: true,
-              splitScreenMode: true,
-              builder: (context, child) {
-                return MaterialApp.router(
-                  routerConfig: router,
-                );
-              },
-            ),
+            child: MaterialApp.router(routerConfig: router),
           ),
         );
 
@@ -82,16 +72,7 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(
           ProviderScope(
-            child: ScreenUtilInit(
-              designSize: const Size(375, 812),
-              minTextAdapt: true,
-              splitScreenMode: true,
-              builder: (context, child) {
-                return MaterialApp.router(
-                  routerConfig: router,
-                );
-              },
-            ),
+            child: MaterialApp.router(routerConfig: router),
           ),
         );
 

@@ -37,9 +37,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
     final isSelected =
         List<bool>.generate(widget.options.length, (i) => i == _selectedIndex);
 
-    return Column(
-      children: [
-        ToggleButtons(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ToggleButtons(
           onPressed: (index) {
             setState(() {
               if (_selectedIndex == index) {
@@ -61,12 +61,12 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
           },
           constraints: BoxConstraints(
             minHeight: 40.0,
-            minWidth: MediaQuery.sizeOf(context).width * .4325,
+            minWidth: constraints.maxWidth * .49,
           ),
           isSelected: isSelected,
           children: widget.options.map(CustomText.new).toList(),
-        ),
-      ],
+        );
+      },
     );
   }
 }

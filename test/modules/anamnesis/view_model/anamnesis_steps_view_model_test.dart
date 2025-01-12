@@ -16,13 +16,13 @@ void main() {
     test('State should be valid after updates', () {
       final container = ProviderContainer();
       container.read(anamnesisForm1ViewModel.notifier)
-        ..updateEnfermedad('Gripe')
-        ..updateOperacion('Cirugía');
+        ..updateDisease('Gripe')
+        ..updateOperation('Cirugía');
 
       final form1State = container.read(anamnesisForm1ViewModel);
       expect(form1State.isValid, true);
-      expect(form1State.enfermedad, 'Gripe');
-      expect(form1State.operacion, 'Cirugía');
+      expect(form1State.disease, 'Gripe');
+      expect(form1State.operation, 'Cirugía');
     });
   });
 
@@ -37,13 +37,13 @@ void main() {
     test('State should be valid after updates', () {
       final container = ProviderContainer();
       container.read(anamnesisForm2ViewModel.notifier)
-        ..setDoloresFrecuentes(true)
-        ..setProblemaHuesosArticulaciones(true);
+        ..setFrequentPain(true)
+        ..setProblemBonesJoints(true);
 
       final form2State = container.read(anamnesisForm2ViewModel);
       expect(form2State.isValid, true);
-      expect(form2State.doloresFrecuentes, true);
-      expect(form2State.problemaHuesosArticulaciones, true);
+      expect(form2State.painFrequent, true);
+      expect(form2State.problemBonesJoints, true);
     });
   });
 }

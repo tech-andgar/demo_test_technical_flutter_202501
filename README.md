@@ -29,7 +29,6 @@ Main packages used:
 
 - flutter_riverpod: ^2.6.1 (State Management)
 - go_router: ^14.3.0 (Navigation)
-- flutter_screenutil: ^5.9.3 (Responsive Design)
 
 Development dependencies:
 
@@ -86,7 +85,8 @@ The application uses **Riverpod** as the state management solution due to:
 
 ```
 lib/
-├── core/         /// Contains reusable components, routing, and theme configuration
+├── core/         /// Contains reusable components, extensions, routing, and theme configuration
+│   ├── extensions/
 │   ├── routes/
 │   ├── theme/
 │   └── widgets/  /// Reusable UI components divided into atoms and molecules
@@ -104,6 +104,7 @@ graph TD;
     Core --> Routes
     Core --> Theme
     Core --> Widgets
+    Core --> Extensions
     Modules --> Anamnesis
     Anamnesis --> Presentation
     Anamnesis --> ViewModel
@@ -132,7 +133,6 @@ Project configuration file containing:
 - Dependencies:
   - flutter_riverpod: State management
   - go_router: Navigation
-  - flutter_screenutil: Responsive design
 - Dev dependencies for testing and code quality
 - Font configurations for multiple `Futura` font variants
 
@@ -163,7 +163,9 @@ Organized in atomic design pattern:
   - CustomText: Text with a required field indicator
 - **Molecules**: Composite components
   - CustomButton: Reusable button component
+  - CustomResponsiveCenter: Reusable responsive child will be centered component
   - CustomToggleButton: Two-state toggle component
+  - CustomTemplatePage: Reusable widget template page component
 
 ### Code Quality
 
@@ -188,7 +190,9 @@ Organized in atomic design pattern:
 
 4. **Custom Widgets**
    - `CustomButton`: Reusable button component
+   - `CustomResponsiveCenter`: Reusable responsive child will be centered component
    - `CustomToggleButton`: Two-state toggle component
+   - `CustomTemplatePage`: Reusable widget template page component
    - `CustomText`: Text with required field indicator
 
 ## Testing

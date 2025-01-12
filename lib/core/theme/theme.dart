@@ -2,7 +2,6 @@
 
 import 'package:demo_test_technical_flutter_202501/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
   static final ThemeData darkTheme = ThemeData.dark(
@@ -15,7 +14,7 @@ class AppTheme {
       titleTextStyle: TextStyle(
         fontFamily: FontFamily.futuraLightBt.value,
         fontWeight: FontWeight.w500,
-        fontSize: 14.sp,
+        fontSize: 14,
         height: 1.31,
         letterSpacing: 0.04,
         color: Colors.grey,
@@ -31,7 +30,7 @@ class AppTheme {
       bodyLarge: TextStyle(
         fontFamily: FontFamily.futuraLightBt.value,
         fontWeight: FontWeight.w500,
-        fontSize: 16.sp,
+        fontSize: 16,
         height: 1.31,
         letterSpacing: 0.04,
         color: Colors.white,
@@ -107,11 +106,10 @@ class AppTheme {
         ),
         textStyle: WidgetStatePropertyAll(
           TextStyle(
-            fontFamily: FontFamily.futuraLightBt.value,
-            fontWeight: FontWeight.w500,
-            fontSize: 16.sp,
-            height: 1.31,
-            letterSpacing: 0.04,
+            fontFamily: FontFamily.futuraBook.value,
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+            color: Colors.black,
           ),
         ),
       ),
@@ -128,15 +126,13 @@ class AppTheme {
       labelStyle: TextStyle(
         fontFamily: FontFamily.futuraMediumItalic.value,
         fontWeight: FontWeight.w500,
-        fontSize: 9.sp,
-        height: 1.31,
-        letterSpacing: 0.04,
+        fontSize: 14,
         color: Colors.white.withAlpha(180),
       ),
       floatingLabelStyle: TextStyle(
         fontFamily: FontFamily.futuraLightBt.value,
         fontWeight: FontWeight.w500,
-        fontSize: 10.sp,
+        fontSize: 10,
         height: 1.31,
         letterSpacing: 0.04,
         color: Colors.white,
