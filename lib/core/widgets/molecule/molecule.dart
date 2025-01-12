@@ -4,3 +4,4 @@ export 'custom_button.dart';
 export 'custom_responsive_center.dart';
 export 'custom_template_page.dart';
 export 'custom_toggle_button.dart';
+export 'develop_by_text.dart';
