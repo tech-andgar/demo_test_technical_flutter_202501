@@ -200,9 +200,7 @@ class AnamnesisStep2Content extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              const Text(
-                                'Desarrollado por Andres Garcia ® (TECH-ANDGAR)',
-                              ),
+                              const DevelopByText(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
