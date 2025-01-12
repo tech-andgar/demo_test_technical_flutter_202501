@@ -13,7 +13,7 @@ class DevelopByText extends StatelessWidget {
       children: [
         Expanded(
           child: RichText(
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
             text: TextSpan(
               text: 'Desarrollado por Andrés García ',
               style: Theme.of(context).textTheme.bodyLarge,
@@ -27,7 +27,7 @@ class DevelopByText extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: ' ® 2025. Todos los derechos reservados. ',
+                  text: ' ® 2025.\nTodos los derechos reservados. ',
                 ),
               ],
             ),

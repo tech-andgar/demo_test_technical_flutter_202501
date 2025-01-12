@@ -1,3 +1,5 @@
+//  Created in Dart by Andres Garcia (TECH-ANDGAR) on 2025-01-03.
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,7 +28,10 @@ class LinkButton extends StatelessWidget {
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         visualDensity: VisualDensity.compact,
         minimumSize: const Size(0, 0),
-        textStyle: Theme.of(context).textTheme.bodyLarge,
+        textStyle: Theme.of(context)
+            .textTheme
+            .bodyLarge!
+            .copyWith(decoration: TextDecoration.underline),
       ),
       onPressed: () {
         _launchUrl(url);
