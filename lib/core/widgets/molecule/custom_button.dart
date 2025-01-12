@@ -1,7 +1,7 @@
 //  Created in Dart by Andres Garcia (TECH-ANDGAR) on 2025-01-03.
 import 'package:flutter/material.dart';
 
-import '../../core.dart';
+import '../widgets.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
