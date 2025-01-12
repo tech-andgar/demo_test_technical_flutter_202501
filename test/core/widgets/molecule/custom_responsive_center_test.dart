@@ -1,4 +1,4 @@
-import 'package:demo_test_technical_flutter_202501/core/widgets/molecule/custom_responsive_center.dart';
+import 'package:demo_test_technical_flutter_202501/core/widgets/template/custom_responsive_center.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
