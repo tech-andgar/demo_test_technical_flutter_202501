@@ -1,0 +1,78 @@
+name: "Init Flutter"
+description: "Initializes Flutter repo"
+inputs:
+  channel:
+    description: "Flutter channel"
+    required: true
+    default: stable
+    type: string
+    # options:
+    #   - stable
+    #   - beta
+    #   - master
+    #   - dev
+    #   - any
+    #   - 3.13.9
+    #   - 3.7.11
+    #   - 3.10.6
+
+outputs:
+  flutter-version:
+    description: "Flutter version"
+    value: ${{ steps.get_flutter_version.outputs.version }}
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+      # with:
+      #   repository: ${{ github.event.pull_request.head.repo.full_name }}
+      #   ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Get Flutter version
+      id: get_flutter_version
+      run: echo "version=$(cat .flutter-version)" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        # flutter-version: '3.7.11'
+        channel: ${{ inputs.channel }}
+        cache: true
+        cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
+        cache-path: '${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:'
+        architecture: x64
+
+    - name: Pre-cache dependencies
+      run: |
+        dart --disable-analytics
+        flutter config --no-analytics
+        flutter precache
+      shell: bash
+
+    - id: checking_version_flutter
+      name: 🔍 Check version Flutter is installed
+      run: flutter --version
+      shell: bash
+
+    - name: Cache Flutter Dependencies
+      uses: actions/cache@v3
+      with:
+        path: ${{ runner.tool_cache }}/flutter
+        key: flutter-${{ runner.os }}-${{ env.version }}
+        restore-keys: |
+          flutter-${{ runner.os }}-
+        # path: |
+        #   $PUB_CACHE
+        # key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+        # restore-keys: |
+        #   ${{ runner.os }}-pub-
+
+    - name: 📦 Install Dependencies
+      run: flutter pub get
+      shell: bash
+
+    # - name: Generate code
+    #   shell: bash
+    #   run: dart run build_runner build

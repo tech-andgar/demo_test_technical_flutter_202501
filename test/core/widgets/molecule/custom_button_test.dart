@@ -1,6 +1,5 @@
 import 'package:demo_test_technical_flutter_202501/core/widgets/molecule/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -13,16 +12,13 @@ void main() {
         var tapped = false;
 
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => MaterialApp(
-              home: Scaffold(
-                body: CustomButton(
-                  label: 'Press Me',
-                  onTap: () {
-                    tapped = true;
-                  },
-                ),
+          MaterialApp(
+            home: Scaffold(
+              body: CustomButton(
+                label: 'Press Me',
+                onTap: () {
+                  tapped = true;
+                },
               ),
             ),
           ),
@@ -41,14 +37,11 @@ void main() {
       'renders button with custom child widget',
       (WidgetTester tester) async {
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => const MaterialApp(
-              home: Scaffold(
-                body: CustomButton(
-                  label: 'Press Me',
-                  child: Icon(Icons.star),
-                ),
+          const MaterialApp(
+            home: Scaffold(
+              body: CustomButton(
+                label: 'Press Me',
+                child: Icon(Icons.star),
               ),
             ),
           ),
@@ -63,14 +56,11 @@ void main() {
       'button should be disabled when onTap is null',
       (WidgetTester tester) async {
         await tester.pumpWidget(
-          ScreenUtilInit(
-            designSize: const Size(375, 812),
-            builder: (_, __) => const MaterialApp(
-              home: Scaffold(
-                body: CustomButton(
-                  label: 'Press Me',
-                  onTap: null,
-                ),
+          const MaterialApp(
+            home: Scaffold(
+              body: CustomButton(
+                label: 'Press Me',
+                onTap: null,
               ),
             ),
           ),

@@ -1,6 +1,5 @@
 import 'package:demo_test_technical_flutter_202501/core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -15,14 +14,6 @@ void main() {
           MaterialApp(
             home: Builder(
               builder: (context) {
-                // Initialize ScreenUtil with test values
-                ScreenUtil.init(
-                  context,
-                  designSize: const Size(375, 812),
-                  minTextAdapt: true,
-                  splitScreenMode: true,
-                );
-
                 // Create a dummy widget to test the theme
                 return MaterialApp(
                   theme: AppTheme.darkTheme,

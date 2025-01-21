@@ -1,5 +1,7 @@
 //  Created in Dart by Andres Garcia (TECH-ANDGAR) on 2025-01-03.
 
+import 'package:flutter/material.dart';
+
 enum FontFamily {
   futuraBookItalic('Futura Book Italic'),
   futur('futur'),
@@ -24,3 +26,6 @@ enum FontFamily {
 
   final String value;
 }
+
+const sizedBoxH16 = SizedBox(height: 16);
+const sizedBoxH12 = SizedBox(height: 12);

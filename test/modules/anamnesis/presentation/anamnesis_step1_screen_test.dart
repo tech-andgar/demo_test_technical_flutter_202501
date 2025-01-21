@@ -2,7 +2,6 @@ import 'package:demo_test_technical_flutter_202501/core/core.dart';
 import 'package:demo_test_technical_flutter_202501/modules/modules.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
@@ -11,13 +10,12 @@ class MockGoRouter extends Mock implements GoRouter {}
 
 void main() {
   late ProviderContainer container;
-  late MockGoRouter mockGoRouter;
+  late MockGoRouter router;
 
   setUp(() {
     container = ProviderContainer();
-    mockGoRouter = MockGoRouter();
-    when(() => mockGoRouter.pushReplacement(any()))
-        .thenAnswer((_) async => null);
+    router = MockGoRouter();
+    when(() => router.push(any())).thenAnswer((_) async => Future.value(null));
   });
 
   tearDown(() {
@@ -27,18 +25,11 @@ void main() {
   Widget createWidgetUnderTest({Widget? child}) {
     return UncontrolledProviderScope(
       container: container,
-      child: ScreenUtilInit(
-        designSize: const Size(800, 1200),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, _) {
-          return MaterialApp(
-            home: InheritedGoRouter(
-              goRouter: mockGoRouter,
-              child: child ?? const AnamnesisStep1Screen(),
-            ),
-          );
-        },
+      child: MaterialApp(
+        home: InheritedGoRouter(
+          goRouter: router,
+          child: child ?? const AnamnesisStep1Screen(),
+        ),
       ),
     );
   }
@@ -88,15 +79,8 @@ void main() {
     await tester.pumpWidget(
       UncontrolledProviderScope(
         container: container,
-        child: ScreenUtilInit(
-          designSize: const Size(800, 1200),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return const MaterialApp(
-              home: AnamnesisStep1Screen(),
-            );
-          },
+        child: const MaterialApp(
+          home: AnamnesisStep1Screen(),
         ),
       ),
     );
@@ -108,8 +92,8 @@ void main() {
 
     // Assert
     final state = container.read(anamnesisForm1ViewModel);
-    expect(state.operacion, equals('Test operation'));
-    expect(state.enfermedad, equals('Test illness'));
+    expect(state.operation, equals('Test operation'));
+    expect(state.disease, equals('Test illness'));
   });
   testWidgets('Next button is disabled when form is invalid', (tester) async {
     // Arrange
@@ -130,21 +114,7 @@ void main() {
     final container = ProviderContainer();
     addTearDown(container.dispose);
 
-    await tester.pumpWidget(
-      UncontrolledProviderScope(
-        container: container,
-        child: ScreenUtilInit(
-          designSize: const Size(800, 1200),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return const MaterialApp(
-              home: AnamnesisStep1Screen(),
-            );
-          },
-        ),
-      ),
-    );
+    await tester.pumpWidget(createWidgetUnderTest());
 
     // Act
     await tester.enterText(find.byType(TextField).first, 'Test operation');
@@ -155,58 +125,28 @@ void main() {
     final button = tester.widget<CustomButton>(find.byType(CustomButton));
     expect(button.onTap, isNotNull);
   });
-
   testWidgets(
     'Next button navigates to next screen when tapped',
     (tester) async {
-      // Arrange
-      final mockGoRouter = MockGoRouter();
-      when(() => mockGoRouter.push(any())).thenAnswer((_) async => null);
-
-      // Create a provider override to ensure form is valid
-      final container = ProviderContainer(
-        overrides: [
-          anamnesisForm1ViewModel.overrideWith(
-            (ref) => AnamnesisForm1ViewModel()
-              ..updateOperacion('Test operation')
-              ..updateEnfermedad('Test illness'),
-          ),
-        ],
-      );
+      final container = ProviderContainer();
       addTearDown(container.dispose);
 
-      await tester.pumpWidget(
-        UncontrolledProviderScope(
-          container: container,
-          child: ScreenUtilInit(
-            designSize: const Size(800, 1200),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) {
-              return MaterialApp(
-                home: InheritedGoRouter(
-                  goRouter: mockGoRouter,
-                  child: const AnamnesisStep1Screen(),
-                ),
-              );
-            },
-          ),
-        ),
-      );
+      await tester.pumpWidget(createWidgetUnderTest());
 
       // Act
       await tester.enterText(find.byType(TextField).first, 'Test operation');
       await tester.enterText(find.byType(TextField).last, 'Test illness');
-      await tester.pump();
-
-      final button = find.byType(CustomButton);
-      expect(button, findsOneWidget);
-
-      await tester.tap(button);
       await tester.pumpAndSettle();
 
       // Assert
-      verify(() => mockGoRouter.push(RoutesName.anamnesisStep2)).called(1);
+      final button = tester.widget<CustomButton>(find.byType(CustomButton));
+      expect(button.onTap, isNotNull);
+
+      await tester.tap(find.byType(CustomButton));
+      await tester.pumpAndSettle();
+
+      verify(() => router.push(RoutesName.anamnesisStep2)).called(1);
+      verifyNoMoreInteractions(router);
     },
   );
 }

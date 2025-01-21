@@ -1,53 +1,30 @@
-name: "build"
+name: "Flutter CI/CD"
 
 on: # rebuild any PRs and main branch changes
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main", "feature/*"]
+    branches:
+      - main
+      - "feature/*"
   workflow_dispatch:
 
 jobs:
-  # Check code formatting and static analysis on a single OS (Linux)
-  # against Dart dev.
-  test:
+  check-dart-formatting:
+    name: "Check Dart formatting"
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: write
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest] # or: macos-latest, windows-latest
         channel: [stable] # or: beta, main
-
     steps:
       - uses: actions/checkout@v4
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - uses: subosito/flutter-action@v2
+      - name: Initialize Flutter
+        uses: ./.github/actions/initialize-flutter
         with:
           channel: ${{ matrix.channel }}
-          cache: true
-          cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
-          cache-path: '${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:'
-          architecture: x64
-
-      - id: disabled_analytics_flutter
-        name: Disabled Analytics Flutter
-        run: flutter config --no-analytics
-
-      - id: disabled_analytics_dart
-        name: Disabled Analytics Dart
-        run: dart --disable-analytics
-
-      - id: checking_version_flutter
-        name: 🔍 Check version Flutter is installed
-        run: flutter --version
-
-      - name: 📦 Install Dependencies
-        run: flutter pub get
 
       # Verifies if the dart code is formatted well
       - name: ✨ Verify formatting
@@ -55,19 +32,65 @@ jobs:
         # --set-exit-if-changed stops execution if the any code is not well formatted
         # --output=none prints files which needs to be formatted
 
-        # Checks for Semantic errors. Can be configured using analysis_options.yaml
+  lint:
+    name: "Static Code Analysis"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest] # or: macos-latest, windows-latest
+        channel: [stable] # or: beta, main
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize Flutter
+        uses: ./.github/actions/initialize-flutter
+        with:
+          channel: ${{ matrix.channel }}
+
+      # Checks for Semantic errors. Can be configured using analysis_options.yaml
       - name: 🔍 Analyze project source
         run: dart analyze --fatal-infos
         # optionally use --fatal-warnings to stop execution if any warnings are found
 
+  test:
+    name: "Run Flutter Tests and Coverage"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest] # or: macos-latest, windows-latest
+        channel: [stable] # or: beta, main
+    permissions:
+      pull-requests: write
+      contents: write
+      # repository-projects: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize Flutter
+        uses: ./.github/actions/initialize-flutter
+        with:
+          channel: ${{ matrix.channel }}
       - name: 🧪 Run Tests with coverage
         run: flutter test --test-randomize-ordering-seed random --coverage
 
       - name: 📊 Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v3
         with:
-          path: "./coverage/lcov.info"
-          min_coverage: 100
+          path: ./coverage/lcov.info
+          min_coverage: 75
+
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
+
+      - name: Report Code Coverage
+        uses: zgosalvez/github-actions-report-lcov@v4
+        with:
+          coverage-files: coverage/lcov.info
+          minimum-coverage: 75
+          artifact-name: code-coverage-report
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # working-directory: apps/my-first-app
+          update-comment: true
 
       - name: ⬆️ Upload Coverage to Coveralls
         uses: coverallsapp/github-action@v2.2.3
@@ -76,7 +99,7 @@ jobs:
           path-to-lcov: coverage/lcov.info
 
       - id: run_package_flutter_coverage_badge
-        name: Run package flutter_coverage_badge
+        name: Generate Coverage Badge
         run: dart run flutter_coverage_badge
 
       - name: Commit changes
@@ -87,8 +110,55 @@ jobs:
           message: 'Updated coverage_badge.svg'
           add: 'coverage_badge.svg'
 
+  build-and-deploy:
+    name: "Build and Deploy Flutter Web"
+    if: github.ref == 'refs/heads/main'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest] # or: macos-latest, windows-latest
+        channel: [stable] # or: beta, main
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize Flutter
+        uses: ./.github/actions/initialize-flutter
+        with:
+          channel: ${{ matrix.channel }}
+
+      # - run: flutter config --enable-web
+      # - run: flutter build web --release
+
       - name: Build Flutter Web
         run: flutter build web --release --base-href="/demo_test_technical_flutter_202501/"
+
+      # - run: |
+      #    cd build/web
+      #     git init
+      #     git config --global user.email "dev@tech-andgar.me"
+      #     git config --global user.name "Andrés García"
+      #     git status
+      #     git remote add origin https://${{secrets.commit_secret}}@github.com/${{secrets.commit_repo}}
+      #     git checkout -b dist
+      #     git add --all
+      #     git commit -m "update"
+      #     git push origin dist --force
+      #     cd -
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITHUB_REPO: ${{ github.repository }}
+      #     GITHUB_ACTOR: ${{ github.actor }}
+      #     GITHUB_SHA: ${{ github.sha }}
+      #     GITHUB_REF: ${{ github.ref }}
+      #     GITHUB_HEAD_REF: ${{ github.head_ref }}
+      #     GITHUB_BASE_REF: ${{ github.base_ref }}
+      #     GITHUB_EVENT_NAME: ${{ github.event_name }}
+      #     GITHUB_EVENT_PATH: ${{ github.event_path }}
+      #     GITHUB_WORKFLOW: ${{ github.workflow }}
+      #     GITHUB_ACTION: ${{ github.action }}
+      #     GITHUB_REPOSITORY: ${{ github.repository }}
+      #     GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

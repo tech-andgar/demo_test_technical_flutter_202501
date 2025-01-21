@@ -10,27 +10,26 @@ final anamnesisForm1ViewModel =
 class AnamnesisForm1ViewModel extends StateNotifier<AnamnesisForm1State> {
   AnamnesisForm1ViewModel() : super(AnamnesisForm1State());
 
-  void updateEnfermedad(String value) {
-    state = state.copyWith(enfermedad: value);
-  }
+  void updateDisease(String value) => state = state.copyWith(disease: value);
 
-  void updateOperacion(String value) {
-    state = state.copyWith(operacion: value);
-  }
+  void updateOperation(String value) =>
+      state = state.copyWith(operation: value);
+
+  void clean() => state = AnamnesisForm1State();
 }
 
 class AnamnesisForm1State {
-  AnamnesisForm1State({this.operacion = '', this.enfermedad = ''});
+  AnamnesisForm1State({this.operation = '', this.disease = ''});
 
-  final String enfermedad;
-  final String operacion;
+  final String disease;
+  final String operation;
 
-  bool get isValid => operacion.isNotEmpty && enfermedad.isNotEmpty;
+  bool get isValid => operation.isNotEmpty && disease.isNotEmpty;
 
-  AnamnesisForm1State copyWith({String? operacion, String? enfermedad}) {
+  AnamnesisForm1State copyWith({String? operation, String? disease}) {
     return AnamnesisForm1State(
-      operacion: operacion ?? this.operacion,
-      enfermedad: enfermedad ?? this.enfermedad,
+      operation: operation ?? this.operation,
+      disease: disease ?? this.disease,
     );
   }
 }
@@ -43,30 +42,33 @@ final anamnesisForm2ViewModel =
 class AnamnesisForm2ViewModel extends StateNotifier<AnamnesisForm2State> {
   AnamnesisForm2ViewModel() : super(AnamnesisForm2State());
 
-  void setDoloresFrecuentes(bool? value) {
+  void setFrequentPain(bool? value) {
     state = AnamnesisForm2State(
-      problemaHuesosArticulaciones: state.problemaHuesosArticulaciones,
-      doloresFrecuentes: value,
+      problemBonesJoints: state.problemBonesJoints,
+      painFrequent: value,
     );
   }
 
-  void setProblemaHuesosArticulaciones(bool? value) {
+  void setProblemBonesJoints(bool? value) {
     state = AnamnesisForm2State(
-      problemaHuesosArticulaciones: value,
-      doloresFrecuentes: state.doloresFrecuentes,
+      problemBonesJoints: value,
+      painFrequent: state.painFrequent,
     );
+  }
+
+  void clean() {
+    state = AnamnesisForm2State();
   }
 }
 
 class AnamnesisForm2State {
   AnamnesisForm2State({
-    this.problemaHuesosArticulaciones,
-    this.doloresFrecuentes,
+    this.problemBonesJoints,
+    this.painFrequent,
   });
 
-  final bool? problemaHuesosArticulaciones;
-  final bool? doloresFrecuentes;
+  final bool? problemBonesJoints;
+  final bool? painFrequent;
 
-  bool get isValid =>
-      problemaHuesosArticulaciones != null && doloresFrecuentes != null;
+  bool get isValid => problemBonesJoints != null && painFrequent != null;
 }

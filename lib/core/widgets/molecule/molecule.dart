@@ -2,3 +2,4 @@
 
 export 'custom_button.dart';
 export 'custom_toggle_button.dart';
+export 'develop_by_text.dart';
