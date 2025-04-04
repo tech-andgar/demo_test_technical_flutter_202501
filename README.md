@@ -110,6 +110,86 @@ graph TD;
     Anamnesis --> ViewModel
 ```
 
+```mermaid
+flowchart TD
+    %% Main Application Entry Point
+    A["Main Application\n(lib/main.dart)"]:::main
+
+    %% Core Components
+    subgraph "Core Components"
+        %% Reusable Widgets Group
+        B["Reusable Widgets"]:::core
+        subgraph "Widgets"
+            B1["Atoms"]:::widget
+            B2["Molecules"]:::widget
+            B3["Templates"]:::widget
+        end
+        C["Extensions"]:::core
+        D["Routing"]:::core
+        E["Theme"]:::core
+    end
+
+    %% Feature Modules
+    subgraph "Feature Modules"
+        F["Anamnesis Module"]:::feature
+        subgraph "Anamnesis"
+            G["Presentation Layer"]:::feature
+            H["ViewModel Layer"]:::feature
+        end
+    end
+
+    %% External Dependencies
+    subgraph "External Dependencies"
+        I["flutter_riverpod"]:::external
+        J["go_router"]:::external
+    end
+
+    %% Configuration Files
+    subgraph "Configuration"
+        K["pubspec.yaml"]:::config
+        L["analysis_options.yaml"]:::config
+    end
+
+    %% Relationships
+    A -->|"initializes"| B
+    A -->|"initializes"| C
+    A -->|"initializes"| D
+    A -->|"initializes"| E
+    A -->|"starts"| F
+
+    B ---|"organized as"| B1
+    B ---|"organized as"| B2
+    B ---|"organized as"| B3
+
+    %% Core and Feature Integration
+    B -->|"supports"| G
+    D -->|"routes to"| G
+    G -->|"updates state via"| H
+
+    %% External Dependencies Integration
+    A --- I
+    A --- J
+
+    %% Click Events
+    click A "https://github.com/tech-andgar/demo_test_technical_flutter_202501/blob/main/lib/main.dart"
+    click B1 "https://github.com/tech-andgar/demo_test_technical_flutter_202501/tree/main/lib/core/widgets/atom"
+    click B2 "https://github.com/tech-andgar/demo_test_technical_flutter_202501/tree/main/lib/core/widgets/molecule"
+    click B3 "https://github.com/tech-andgar/demo_test_technical_flutter_202501/tree/main/lib/core/widgets/template"
+    click C "https://github.com/tech-andgar/demo_test_technical_flutter_202501/tree/main/lib/core/extensions"
+    click D "https://github.com/tech-andgar/demo_test_technical_flutter_202501/tree/main/lib/core/routes"
+    click E "https://github.com/tech-andgar/demo_test_technical_flutter_202501/blob/main/lib/core/theme/theme.dart"
+    click G "https://github.com/tech-andgar/demo_test_technical_flutter_202501/tree/main/lib/modules/anamnesis/presentation"
+    click H "https://github.com/tech-andgar/demo_test_technical_flutter_202501/tree/main/lib/modules/anamnesis/view_model"
+
+    %% Styles
+    classDef main fill:#ADD8E6,stroke:#000,stroke-width:2px;
+    classDef core fill:#90EE90,stroke:#000,stroke-width:2px;
+    classDef widget fill:#FFB6C1,stroke:#000,stroke-width:2px;
+    classDef feature fill:#FFFF99,stroke:#000,stroke-width:2px;
+    classDef external fill:#D3D3D3,stroke:#000,stroke-width:2px;
+    classDef config fill:#FFD700,stroke:#000,stroke-width:2px;
+```
+
 ## Technical Documentation
 
 ### Configuration Files
